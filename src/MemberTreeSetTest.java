@@ -15,5 +15,11 @@ public class MemberTreeSetTest {
 
         // TreeSet로 구현되었고 Member 클래스에서 정렬시켰기 때문에 출력을 할 때 정렬이 되어서 출력된다.
         memberTreeSet.showAllMember();
+
+        // 결과
+        // 이태성 회원님의 아이디는 1001입니다.
+        // 박주희 회원님의 아이디는 1002입니다.
+        // 정기윤 회원님의 아이디는 1003입니다.
+        // 윤호근 회원님의 아이디는 1004입니다.
     }
 }

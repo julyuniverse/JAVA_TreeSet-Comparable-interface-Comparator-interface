@@ -1,7 +1,17 @@
-public class Member implements Comparable<Member> { // TreeSet로 구현될 것이기 때문에 비교할 수 있는 Comparable 인터페이스를 implements 한다. 비교 대상은 Member 타입이기 때문에 <T>는 Member를 심어 준다.
+import java.util.Comparator;
+
+public class Member implements Comparator<Member> { // TreeSet로 구현될 것이기 때문에 비교할 수 있는 Comparator 인터페이스를 implements 한다. 비교 대상은 Member 타입이기 때문에 <T>는 Member를 심어 준다.
     // 멤버 변수
     private int memberId; // 회원 아이디
     private String memberName; // 회원 이름
+
+    /**
+     * Comparator 인터페이스를 사용할 땐 기본 생성자가 필요하다.
+     * MemberTreeSet 클래스에서 생성자를 만들 때 생성자 안에 TreeSet<>()의 인자로 Member가 필요하기 때문이다.
+     */
+
+    // 기본 생성자
+    public Member() {}
 
     // 생성자
     public Member(int memberId, String memberName) {
@@ -53,22 +63,12 @@ public class Member implements Comparable<Member> { // TreeSet로 구현될 것�
     }
 
     @Override
-    public int compareTo(Member member) { // Comparable 인터페이스의 compareTo() 메서드를 재정의한다.
+    public int compare(Member member1, Member member2) { // Comparator 인터페이스의 compare() 메서드를 재정의한다.
         /**
-         * compareTo() 메서드는 TreeSet으로 선언된 변수에 속해 있는 값을 내부적으로 비교한다.
-         * compareTo() 메서드의 반환값은 int다.
-         * 넘어온 매개 변숫값과 this의 값을 비교하여 this의 값이 더 높으면 양수를 서로 같은 값이면 0을 this의 값이 더 낮으면 음수를 설정하도록 한다.
-         * 위와 같이 설정을 하면 오름차순이 될 것이고 반대로 this의 값이 더 높으면 음수를 서로 같은 값이면 0을 this의 값이 더 낮으면 양수를 설정하면 내림차순으로 설정된다.
+         * compare() 메서드도 Comparable 인터페이스의 compareTo() 메서드와 동일한 흐름으로 작동한다.
+         * TreeSet을 구현할 때 Comparable 인터페이스나 Comparator 인터페이스 둘 중에 하나를 활용하면 된다.
          */
-        if (this.memberId > member.memberId) {
-            return 1;
-        } else if (this.memberId < member.memberId) {
-            return -1;
-        } else {
-            return 0;
-        }
-        // 반환값을 위와 같이 설정해도 가능하고 아래와 같이 설정해도 가능하다. 중요한 건 양수이냐 0이냐 음수이냐를 반환하면 된다.
-        // return this.memberId - member.memberId; (오름차순)
+        return member1.memberId - member2.memberId; // (오름차순)
         // return (this.memberId - member.memberId) * (-1); (내림차순)
     }
 }

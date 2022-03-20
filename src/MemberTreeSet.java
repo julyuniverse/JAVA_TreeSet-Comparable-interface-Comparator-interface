@@ -6,7 +6,11 @@ public class MemberTreeSet {
 
     // 생성자
     public MemberTreeSet() {
-        treeSet = new TreeSet<>();
+        /**
+         * Comparator 인터페이스를 사용할 경우 TreeSet<>()의 인자는 comparable이 구현이 된 인스턴스를 지정해 주어야 한다.
+         */
+
+        treeSet = new TreeSet<>(new Member());
     }
 
     // 회원 추가
