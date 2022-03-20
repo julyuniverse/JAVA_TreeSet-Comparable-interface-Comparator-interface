@@ -20,3 +20,8 @@
 
 - compare() 메서드도 Comparable 인터페이스의 compareTo() 메서드와 동일한 흐름으로 작동한다.
   TreeSet을 구현할 때 Comparable 인터페이스나 Comparator 인터페이스 둘 중에 하나를 활용하면 된다.
+
+## Comparator의 활용
+
+- 이미 Comparable이 구현된 경우 Comparator로 비교하는 방식을 다시 구현할 수 있음.
+  ex) String 클래스는 이미 내부적으로 comparable이 구현되어 있음. 이 같은 경우를 Comparator를 통해서 다시 정렬을 함.
